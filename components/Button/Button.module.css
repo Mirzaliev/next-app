@@ -1,0 +1,61 @@
+.default {
+  display: inline-block;
+  border: none;
+  padding: 10px;
+  margin: 5px;
+  text-decoration: none;
+  background: none;
+  font-family: sans-serif;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-align: center;
+  transition: background-color 500ms ease-in-out,
+  transform 500ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: 14px;
+}
+
+.primary {
+  background-color: var(--accent);
+  border-radius: 5px;
+  color: white;
+}
+
+.primary svg {
+  fill: white;
+}
+
+.primary:hover {
+  background-color: var(--button-hover)
+}
+
+
+.ghost {
+  border: var(--border);
+  border-radius: 5px;
+  color: var(--text-black);
+}
+
+.ghost svg {
+  fill: var(--text-black);
+}
+
+.ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.ghost:hover  svg {
+  fill: var(--accent);
+}
+
+.arrow {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.down {
+  transform: rotate(90deg);
+  transition: transform .5s ease;
+}

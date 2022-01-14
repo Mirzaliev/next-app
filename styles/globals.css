@@ -1,16 +1,30 @@
 html,
 body {
-  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  padding: 0;
+
+  font-family: Roboto, sans-serif;
 }
 
 a {
-  color: inherit;
   text-decoration: none;
+
+  color: inherit;
 }
 
 * {
   box-sizing: border-box;
+}
+
+:root {
+  --accent: #7653FC;
+
+  --text-black: #3B434E;
+  --text-gray: #787D85;
+  --text-placholder: #A4A4A4;
+
+  --border-color: #EBEBEB;
+  --border: 1px solid #EBEBEB;
+
+  --button-hover: rgba(118, 83, 252, 0.85)
 }
