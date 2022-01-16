@@ -1,0 +1,11 @@
+.star{
+  margin-right: 5px;
+}
+
+.isEditable {
+  cursor: pointer;
+}
+
+.active {
+  fill: var(--accent);
+}
