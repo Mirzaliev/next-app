@@ -16,11 +16,17 @@ a {
   box-sizing: border-box;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 :root {
   --accent: #7653FC;
 
   --text-black: #3B434E;
-  --text-gray: #787D85;
+  --text-gray: #787d85;
   --text-placholder: #A4A4A4;
 
   --border-color: #EBEBEB;

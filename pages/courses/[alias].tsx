@@ -12,7 +12,7 @@ function Course({page, products}: CourseProps): JSX.Element {
 
   return (
     <>
-      {products.map((p: ProductModel) => (<li key={p._id}>{p.title}</li>))}
+      {products && products.map((p: ProductModel) => (<li key={p._id}>{p.title}</li>))}
     </>
   );
 }
@@ -45,13 +45,18 @@ export const getStaticProps: GetStaticProps<CourseProps> = async ({params}: GetS
     "limit": 10
   });
 
+  const {data: menu} = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_API + '/top-page/find', {
+    firstCategory
+  });
+
+
   return {
-    props: {firstCategory, page, products}
+    props: {menu, firstCategory, page, products}
   };
 };
 
 interface CourseProps extends Record<string, unknown> {
-  menu?: MenuItem[];
+  menu: MenuItem[];
   firstCategory: number;
   page: AliasPageModel;
   products: ProductModel[];

@@ -1,0 +1,75 @@
+.nav{
+  margin-bottom: 60px;
+}
+
+.nav ul li {
+  white-space: nowrap;
+}
+
+.category > li{
+  margin-top: 20px;
+}
+
+.category li a {
+  display: flex;
+  align-items: center;
+}
+
+.category li a span:first-child{
+  display: flex;
+  margin-right: 20px;
+}
+
+.category li a span:first-child svg{
+  fill: var(--text-gray);
+}
+
+.category li a span:last-child{
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  color: var(--text-gray)
+}
+
+.category > li > a:hover > span, .category > li.active > a > span{
+  color: var(--accent);
+}
+.category > li > a:hover > span svg, .category > li.active > a > span svg{
+  fill: var(--accent);
+}
+
+
+.secondCategory {
+  font-size: 14px;
+  border-left: var(--border);
+  margin-left: 12px;
+  padding-left: 32px;
+}
+
+.secondCategory > li > span{
+  display: block;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+.secondCategory > li > ul.isOpen{
+  display: block ;
+}
+
+.secondCategory > li > ul{
+  display: none ;
+}
+
+.secondCategory > li > ul > li{
+  font-weight: 300;
+  color: var(--text-gray);
+  margin-bottom: 10px;
+}
+
+
+
+.secondCategory > li > ul > li > a:hover, .secondCategory > li > ul > li.active > a{
+  color: var(--accent);
+}
