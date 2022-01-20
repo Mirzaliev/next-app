@@ -1,16 +1,22 @@
 import {ProductProps} from "./Product.props";
 import style from './Product.module.css';
 import {P, LabelGroup, Label, Button, Rating, Htag} from '../../components';
+import {pluralText} from '../../helper/pluralText';
 
-
-import React from "react";
+import React, {useState} from "react";
 import {price} from "../../helper/price";
+import Image from 'next/image';
+import classNames from "classnames";
 
 export const Product = ({product}: ProductProps): JSX.Element=> {
-
+  const [reviewOpen, setReviewOpen] = useState<boolean>(false);
   return (<div className={style.wrapper}>
     <div className={style.grid}>
-      <div className="title">
+      <div className={style.title}>
+        <img
+          src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
+          alt={product.title}
+        />
         <Htag tag={'h3'} children={product.title}/>
         <LabelGroup>
           {product.categories && product.categories.map(p => (<Label key={p}>{p}</Label>))}
@@ -26,7 +32,7 @@ export const Product = ({product}: ProductProps): JSX.Element=> {
           <tr>
             <td>цена курса</td>
             <td>в рассрочку</td>
-            <td>0 отзывов о курсе</td>
+            <td>{pluralText(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])} о курсе</td>
           </tr>
         </table>
       </div>
@@ -43,11 +49,11 @@ export const Product = ({product}: ProductProps): JSX.Element=> {
               <td>{p.value}</td>
             </tr>
           ))}
-         
+
         </table>
       </div>
       <div className="">
-        
+
         {product.advantages && <>
           <table width="100%" className='mb15'>
             <tr  className='mb10'>
@@ -59,7 +65,7 @@ export const Product = ({product}: ProductProps): JSX.Element=> {
           </table>
         </>
         }
-        
+
       </div>
       <LabelGroup>
         {product.tags && product.tags.map(p => (<Label key={p}>{p}</Label>))}
@@ -67,7 +73,12 @@ export const Product = ({product}: ProductProps): JSX.Element=> {
       <div className={style.divider}><hr className='hr'/></div>
       <div className={style.btns}>
         <Button mode={"primary"}>Подробнее о курсе</Button>
-        <Button mode={"ghost"} arrow='right'>Отзывы о курсе </Button>
+        <Button mode={"ghost"} arrow={ reviewOpen ? 'down' : 'right'} onClick={() => setReviewOpen(!reviewOpen)}>Отзывы о курсе </Button>
+      </div>
+      <div className={classNames(style.reviews, {
+        [style.reviewOpen]: reviewOpen
+      })}>
+        vbcvbcvbcvbcv
       </div>
     </div>
   </div>);

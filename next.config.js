@@ -1,17 +1,20 @@
 module.exports = {
+  images: {
+    domains: ['courses-top.ru']
+  },
   reactStrictMode: true,
   webpack(config) {
-      config.module.rules.push({
-          test: /\.svg$/,
-          use: [
-              {
-                  loader: "@svgr/webpack"
-              },
-          ],
-          issuer: {
-              and: [/\.(ts|tsx|js|jsx|md|mdx)$/]
-          }
-      });
-      return config;
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: [
+        {
+          loader: "@svgr/webpack"
+        },
+      ],
+      issuer: {
+        and: [/\.(ts|tsx|js|jsx|md|mdx)$/]
+      }
+    });
+    return config;
   },
 };

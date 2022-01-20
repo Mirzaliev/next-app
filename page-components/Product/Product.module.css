@@ -22,3 +22,33 @@
   gap: 10px 20px;
   grid-template-columns: 1fr 1fr 1fr;
 }
+
+.title {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  grid-gap: 10px;
+  gap: 10px;
+}
+.title img {
+  align-self: center;
+  width: 70px;
+  height: 70px;
+  margin-right: 20px;
+  border-radius: 5px;
+  grid-row-start: 1;
+  grid-row-end: -1;
+}
+.title h3 {
+  align-self: flex-end;
+}
+
+.reviews {
+  overflow: hidden;
+  max-height: 0;
+  padding: 0;
+}
+.reviewOpen {
+  max-height: 100%;
+  overflow: auto;
+}
