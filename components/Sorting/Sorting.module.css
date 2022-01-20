@@ -1,0 +1,14 @@
+.filters {
+  justify-self: end
+}
+.filters > a {
+  margin-right: 10px;
+}
+
+.filters > a:hover {
+  color: var(--accent);
+}
+
+.filters > a.active {
+  color: var(--accent);
+}

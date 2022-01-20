@@ -1,14 +1,22 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {withLayout} from "../../layout";
 import axios from 'axios';
 import {GetStaticPaths, GetStaticProps, GetStaticPropsContext} from "next";
 import {MenuItem} from "../../interfaces/Menu.interface";
 import {firstLevelMenu} from "../../helper/menu";
 import {ParsedUrlQuery} from "querystring";
+import {AppContext} from "../../context/app.context";
 
 
 function Category({menu,firstCategory}: CategoryProps): JSX.Element {
 
+  const {setMenu} = useContext(AppContext);
+
+  useEffect(() => {
+    if (setMenu) {
+      setMenu(menu);
+    }
+  }, [menu]);
 
   return (
     <>

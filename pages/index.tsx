@@ -1,4 +1,5 @@
-import {Button} from "../components";
+import {Button, Rating, Label, LabelGroup} from "../components";
+
 import React, {useEffect, useState} from "react";
 import {withLayout} from "../layout";
 import axios from 'axios';
@@ -15,6 +16,15 @@ function Home({menu}: HomeProps): JSX.Element {
       <Button mode='primary' className='sdfsdfsdf' arrow='right'
         onClick={() => setCounter(counter + 1)}>{counter}</Button>
       <Button mode='ghost' arrow='down'>ghost</Button>
+      <Rating rating={5}/>
+      <LabelGroup>
+        <Label link={'/link'}>Дизайн</Label>
+        <Label link={'/link'} >онлайн</Label>
+        <Label link={'/link'}>Помощь в составлении резюме</Label>
+        <Label link={'/link'} mode={"green"}>-28 060 ₽</Label>
+        <Label link={'/link'} mode={"red"}>hh.ru</Label>
+      </LabelGroup>
+
     </>
   );
 }

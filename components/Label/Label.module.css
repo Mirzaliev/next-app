@@ -1,0 +1,44 @@
+.label {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 16px;
+  border-radius: 20px;
+  padding: 5px 8px;
+  margin: 5px 0;
+}
+
+.outline {
+  border: var(--border);
+  color: var(--text-black);
+  font-weight: 500;
+}
+.red {
+  font-weight: bold;
+  background-color: red;
+  color: white;
+}
+
+.green {
+  font-weight: bold;
+  background-color: #C8F8E4;
+  color: #1DC37E;
+}
+
+.grey {
+  font-weight: bold;
+  background-color: #b3c0d9;
+  color: white;
+}
+
+.row > a {
+  display: inline-block;
+  margin-right: 7px;
+}
+.row > a:last-child {
+  margin-right: 0;
+}
+
+.column > a{
+  display: block;
+  text-align: center;
+}

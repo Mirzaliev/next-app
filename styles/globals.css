@@ -1,8 +1,23 @@
+:root {
+  --accent: #7653FC;
+
+  --text-black: #3B434E;
+  --text-gray: #787d85;
+  --text-placholder: #A4A4A4;
+
+  --border-color: #EBEBEB;
+  --border: 1px solid #EBEBEB;
+
+  --button-hover: rgba(118, 83, 252, 0.85)
+}
+
+
 html,
 body {
   margin: 0;
   padding: 0;
-
+  background: #f5f6f8;
+  color: var(--text-black);
   font-family: Roboto, sans-serif;
 }
 
@@ -22,15 +37,30 @@ ul {
   list-style: none;
 }
 
-:root {
-  --accent: #7653FC;
 
-  --text-black: #3B434E;
-  --text-gray: #787d85;
-  --text-placholder: #A4A4A4;
+.text-bold {
+  font-weight: bold;
+}
 
-  --border-color: #EBEBEB;
-  --border: 1px solid #EBEBEB;
+.text-light {
+  font-weight: 300;
+}
 
-  --button-hover: rgba(118, 83, 252, 0.85)
+.border-bottom {
+  border-bottom: var(--border);
+}
+
+.hr {
+  width: 100%;
+  height: 1px;
+  border: none;
+  background: var(--border-color);
+}
+
+.mb15 {
+  margin-bottom: 15px ;
+}
+
+.mb10 {
+  margin-bottom: 10px ;
 }

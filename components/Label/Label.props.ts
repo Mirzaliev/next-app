@@ -1,6 +1,13 @@
-import {DetailedHTMLProps, HTMLAttributes} from "react";
-import {HtmlAttributes} from "csstype";
+import {DetailedHTMLProps, HTMLAttributes, ReactNode} from "react";
 
-interface LabelProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{
-  
+
+export interface LabelProps extends DetailedHTMLProps<HTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>{
+  children: ReactNode;
+  link?: string;
+  mode?: 'outline' | 'green' | 'red' | 'grey';
+}
+
+export interface LabelGroupsProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{
+  children: ReactNode;
+  mode?: 'column' | 'row';
 }

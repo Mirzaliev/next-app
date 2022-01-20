@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useContext, useReducer} from 'react';
 import style from './Layout.module.css';
 import {LayoutProps} from "./Layout.props";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import Footer from "./Footer";
-import {AppContextProvider, IAppContext} from "../context/app.context";
+import {AppContext, AppContextProvider, IAppContext} from "../context/app.context";
 
 
 const Layout = ({children}: LayoutProps): JSX.Element => {
