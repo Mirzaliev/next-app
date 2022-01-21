@@ -51,4 +51,5 @@
 .reviewOpen {
   max-height: 100%;
   overflow: auto;
+  grid-column: 1 / -1;
 }

@@ -12,6 +12,7 @@
   padding: 7px 12px;
   border: var(--border);
   color: var(--text-black);
+  width: 100%;
 }
 .input ::placeholder {
   color: var(--text-gray);

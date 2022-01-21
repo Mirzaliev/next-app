@@ -3,13 +3,16 @@ import style from './Product.module.css';
 import {P, LabelGroup, Label, Button, Rating, Htag} from '../../components';
 import {pluralText} from '../../helper/pluralText';
 
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import {price} from "../../helper/price";
 import Image from 'next/image';
 import classNames from "classnames";
+import {Review} from "../Review/Review";
+import {ReviewForm} from "..";
 
 export const Product = ({product}: ProductProps): JSX.Element=> {
   const [reviewOpen, setReviewOpen] = useState<boolean>(false);
+
   return (<div className={style.wrapper}>
     <div className={style.grid}>
       <div className={style.title}>
@@ -78,7 +81,9 @@ export const Product = ({product}: ProductProps): JSX.Element=> {
       <div className={classNames(style.reviews, {
         [style.reviewOpen]: reviewOpen
       })}>
-        vbcvbcvbcvbcv
+        {product.reviews && product.reviews.map((review, index) => (<Review key={index} review={review}/>)) }
+        <div className={style.divider}><hr className='hr'/></div>
+        <ReviewForm productId={product._id}/>
       </div>
     </div>
   </div>);

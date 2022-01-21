@@ -1,0 +1,41 @@
+.form {
+  display: grid;
+  grid-template-columns: [s] auto auto auto [e];
+  gap: 20px 30px;
+}
+.title {
+  justify-self: left;
+}
+.textarea, .actions{
+  grid-column: s / e;
+}
+.rating {
+  display: flex;
+  justify-self: right;
+}
+.rating > span {
+  margin-right: 20px;
+}
+
+
+.alert {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px 30px;
+  background-color: #c1f1dd;
+  padding: 10px;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.error {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px 30px;
+  background-color: rgba(241, 193, 193, 0.56);
+  padding: 10px;
+  align-items: center;
+  margin-top: 25px;
+}

@@ -4,6 +4,7 @@ import axios from 'axios';
 import {GetStaticProps } from "next";
 import {MenuItem} from "../interfaces/Menu.interface";
 import {Input, Textarea} from "../components";
+import {API} from "../helper/api";
 
 
 function Home({menu}: HomeProps): JSX.Element {
@@ -20,7 +21,7 @@ export default withLayout(Home);
 
 export const getStaticProps: GetStaticProps = async () => {
   const firstCategory = 0;
-  const {data: menu} = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_API + '/top-page/find', {
+  const {data: menu} = await axios.post<MenuItem[]>(API.topPage.find, {
     firstCategory
   });
   return {
