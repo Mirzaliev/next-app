@@ -50,22 +50,21 @@
   display: block;
   font-weight: 500;
   text-transform: uppercase;
-  margin: 15px 0;
+  margin: 10px 0;
   cursor: pointer;
 }
-
-.secondCategory > li > ul.isOpen{
-  display: block ;
+.secondCategory {
+  font-size: 14px;
+  border-left: var(--border);
+  margin-left: 12px;
+  padding-left: 32px;
 }
 
-.secondCategory > li > ul{
-  display: none ;
-}
 
 .secondCategory > li > ul > li{
   font-weight: 300;
   color: var(--text-gray);
-  margin-bottom: 10px;
+  overflow: hidden;
 }
 
 

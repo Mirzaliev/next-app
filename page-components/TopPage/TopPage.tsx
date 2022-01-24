@@ -28,7 +28,7 @@ export const TopPage = ({page, firstCategory, products}: TopPageProps): JSX.Elem
         <Label mode={"grey"}>{products.length}</Label>
         <Sorting sort={sort} setSort={setSort}/>
       </div>
-      {_products && _products.map((product: ProductModel) => (<Product key={product._id} product={product}/>))}
+      {_products && _products.map((product: ProductModel) => (<Product layout key={product._id} product={product}/>))}
     </>
   );
 };

@@ -6,7 +6,7 @@ import style from './menu.module.css';
 import Link from 'next/link';
 import {useRouter} from "next/router";
 import {firstLevelMenu} from "../../helper/menu";
-
+import { motion } from 'framer-motion';
 
 
 export const Menu = (): JSX.Element => {
@@ -14,6 +14,28 @@ export const Menu = (): JSX.Element => {
 
   const router =  useRouter();
 
+  const variants = {
+    visible: {
+        transition: {
+          when: 'beforeChildren',
+          staggerChildren: 0.1
+        }
+    },
+    hidden: {
+
+    }
+  }
+
+  const variantsChild = {
+    visible: {
+      opacity: 1,
+      height: 29
+    },
+    hidden: {
+      opacity: 0,
+      height: 0
+    }
+  }
   const openSecondLevelMenu = (secondMenuName: string) => {
     setMenu && setMenu(menu.map(m => {
       if(m._id.secondCategory == secondMenuName) {
@@ -55,9 +77,9 @@ export const Menu = (): JSX.Element => {
               <span onClick={() =>  openSecondLevelMenu(m._id.secondCategory)}>
                 {m._id.secondCategory}
               </span>
-              <ul className={m.isOpened ? style.isOpen : ''} >
+              <motion.ul layout variants={variants} initial={m.isOpened ? 'visible' : 'hidden'} animate={m.isOpened ? 'visible' : 'hidden'}>
                 {buildThirdLevelMenu(m.pages, menuChildren.route)}
-              </ul>
+              </motion.ul>
             </li>
           );
         })}
@@ -70,7 +92,7 @@ export const Menu = (): JSX.Element => {
     return (
       <>
         {pages.map(p => (
-          <li key={p.alias} className={classNames({
+          <motion.li variants={variantsChild}  key={p.alias} className={classNames({
             [style.active]: p.alias == router.asPath.split('/')[2]
           })}>
             <Link href={`/${route}/${p.alias}`} >
@@ -79,7 +101,7 @@ export const Menu = (): JSX.Element => {
               </a>
             </Link>
 
-          </li>
+          </motion.li>
         ))}
       </>
     );

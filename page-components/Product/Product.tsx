@@ -3,17 +3,28 @@ import style from './Product.module.css';
 import {P, LabelGroup, Label, Button, Rating, Htag} from '../../components';
 import {pluralText} from '../../helper/pluralText';
 
-import React, {useRef, useState} from "react";
+import React, {ForwardedRef, forwardRef, useRef, useState} from "react";
 import {price} from "../../helper/price";
 import Image from 'next/image';
 import classNames from "classnames";
 import {Review} from "../Review/Review";
 import {ReviewForm} from "..";
+import {motion} from "framer-motion";
 
-export const Product = ({product}: ProductProps): JSX.Element=> {
+export const Product = motion(forwardRef(({product}: ProductProps, ref:ForwardedRef<HTMLDivElement>): JSX.Element=> {
   const [reviewOpen, setReviewOpen] = useState<boolean>(false);
 
-  return (<div className={style.wrapper}>
+  const reviewRef = useRef<HTMLFormElement>(null);
+
+  const goScrollReview = () => {
+    setReviewOpen(!reviewOpen);
+    reviewRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  };
+
+  return (<div className={style.wrapper} ref={ref}>
     <div className={style.grid}>
       <div className={style.title}>
         <img
@@ -35,7 +46,7 @@ export const Product = ({product}: ProductProps): JSX.Element=> {
           <tr>
             <td>цена курса</td>
             <td>в рассрочку</td>
-            <td>{pluralText(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])} о курсе</td>
+            <td><a href="#ref" onClick={goScrollReview}>{pluralText(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])} о курсе</a></td>
           </tr>
         </table>
       </div>
@@ -78,13 +89,13 @@ export const Product = ({product}: ProductProps): JSX.Element=> {
         <Button mode={"primary"}>Подробнее о курсе</Button>
         <Button mode={"ghost"} arrow={ reviewOpen ? 'down' : 'right'} onClick={() => setReviewOpen(!reviewOpen)}>Отзывы о курсе </Button>
       </div>
-      <div className={classNames(style.reviews, {
+      <motion.div className={classNames(style.reviews, {
         [style.reviewOpen]: reviewOpen
       })}>
         {product.reviews && product.reviews.map((review, index) => (<Review key={index} review={review}/>)) }
         <div className={style.divider}><hr className='hr'/></div>
-        <ReviewForm productId={product._id}/>
-      </div>
+        <ReviewForm ref={reviewRef} productId={product._id}/>
+      </motion.div>
     </div>
   </div>);
-};
+}));

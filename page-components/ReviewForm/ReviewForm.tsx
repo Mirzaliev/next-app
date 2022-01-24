@@ -1,5 +1,5 @@
 import {ReviewFormProps} from "./ReviewForm.props";
-import React, {useState} from "react";
+import React, {ForwardedRef, forwardRef, useState} from "react";
 import style from './ReviewForm.module.css';
 import {Input} from "../../components/Input";
 import {Rating} from "../../components/Rating";
@@ -10,7 +10,8 @@ import {useForm, Controller} from "react-hook-form";
 import {IReviewForm, IReviewFormResponse} from "./ReviewForm.interface";
 import axios, {AxiosError} from "axios";
 import {API} from "../../helper/api";
-export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps): JSX.Element=> {
+
+export const ReviewForm = forwardRef(({ productId, className, ...props }: ReviewFormProps, ref: ForwardedRef<HTMLFormElement>): JSX.Element=> {
 
   const { register, control, handleSubmit, formState: { errors }} = useForm<IReviewForm>();
   const [isSuccess, setSuccess] = useState<boolean>(false);
@@ -29,7 +30,7 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
   };
 
   return (
-    <form onSubmit={handleSubmit(postReview)}>
+    <form onSubmit={handleSubmit(postReview)} ref={ref}>
       <div className={style.form} {...props}>
         <Input {...register('name', { required: { value: true, message: 'Заполните имя' } })} error={errors.name} placeholder={'Ваше имя'}/>
         <Input {...register('title',{ required: { value: true, message: 'Заполните заголовок' } })} error={errors.title} className={style.title} placeholder={'Заголовок'}/>
@@ -56,4 +57,4 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
       </div>}
     </form>
   );
-};
+});
